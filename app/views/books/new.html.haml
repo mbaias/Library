@@ -1,0 +1,38 @@
+- if @book.errors.any?
+  %h3 The following errors occured
+  %ul
+    - @book.errors.full_messages.each do |msg|
+      %li
+        = msg
+.row
+  .col-sm-offset-3.col-sm-6
+    = form_for(@book, :html => {:multipart => true, class: "form-horizontal", role: "form"}) do |f|
+      .form-group
+        .control-label.col-sm-2
+          = f.hidden_field :user_id, value: @book
+      .form-group
+        .control-label.col-sm-2
+          = f.label :name
+        .col-sm-8
+          = f.text_field :name, class: "form-control", placeholder: "Name of the book", autofocus: true
+      .form-group
+        .control-label.col-sm-2
+          = f.label :author
+        .col-sm-8
+          = f.text_field :author, class: "form-control", placeholder: "Author of the book"
+      .form-group
+        .control-label.col-sm-2
+          = f.label :year
+        .col-sm-8
+          = f.text_field :year, class: "form-control", placeholder: "Year"
+      .form-group
+        .control-label.col-sm-2
+          = f.label :photo
+        .col-sm-8
+          = f.file_field :photo
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.collection_select(:category_id, Category.all, :id, :name)      
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit class: "btn btn-primary btn-sm"

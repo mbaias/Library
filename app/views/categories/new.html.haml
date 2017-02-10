@@ -1,0 +1,18 @@
+- if @category.errors.any?
+  %h3 The following errors occured
+  %ul
+    - @category.errors.full_messages.each do |msg|
+      %li
+        = msg
+.row
+  .col-sm-offset-3.col-sm-6
+    %h3{align: "center"} Add genre
+    = form_for(@category, :html => {class: "form-horizontal", role: "form"}) do |f|
+      .form-group
+        .control-label.col-sm-3
+          = f.label :name, "Genre name: "
+        .col-sm-8
+          = f.text_field :name, class: "form-control"
+      .form-group
+        .col-sm-offset-3.col-sm-2
+          = f.submit "Add genre", class: "btn btn-primary btn-sm"

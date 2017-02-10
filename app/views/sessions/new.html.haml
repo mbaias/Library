@@ -1,0 +1,18 @@
+.row
+	.col-sm-offset-3.col-sm-6
+		.well
+			%h3{align: "center"} Log in to your account
+			= form_tag(sessions_path, {class: "form-horizontal", role: "form"}) do
+				.form-group
+					.control-label.col-sm-2
+						= label_tag :email, "Email:"
+					.col-sm-8
+						= text_field_tag :email, params[:email], class: "form-control", placeholder: "Email address"
+				.form-group
+					.control-label.col-sm-2
+						= label_tag :password, "Password:"
+					.col-sm-8
+						= password_field_tag :password, nil, class: "form-control", placeholder: "Password"
+				.form-group
+					.col-sm-offset-2.col-sm-2
+						= submit_tag "Log in", class: "btn btn-primary btn-sm"

@@ -1,0 +1,35 @@
+.row
+  .col-sm-offset-3.col-sm-6
+    = form_for(@user,:html => {class: "form-horizontal", role: "form"}) do |f|
+      .form-group
+        .control-label.col-sm-2
+          = f.label :name
+        .col-sm-8
+          = f.text_field :name, class: "form-control", placeholder: "Enter your name"
+      .form-group
+        .control-label.col-sm-2
+          = f.label :username
+        .col-sm-8
+          = f.text_field :username, class: "form-control", placeholder: "Enter your username", autofocus: true
+      .form-group
+        .control-label.col-sm-2
+          = f.label :email
+        .col-sm-8
+          = f.text_field :email, class: "form-control", placeholder: "Email address"
+      .form-group
+        .control-label.col-sm-2
+          = f.label :password
+        .col-sm-8
+          = f.password_field :password, class: "form-control", placeholder: "Password"
+      .form-group
+        .col-sm-offset-2.col-sm-2
+          = f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary btn-sm")
+      .form-group
+        .social-buttons{:align => "center"}
+          %p Or Login via
+          %a.btn.btn-fb{:href => "#"}
+            %i.fa.fa-facebook
+            Facebook
+          %a.btn.btn-tw{:href => "#"}
+            %i.fa.fa-twitter
+            Twitter

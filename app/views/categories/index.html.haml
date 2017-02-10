@@ -1,0 +1,7 @@
+%h1 Genres
+- @categories.each do |c|
+	.row
+		.col-sm-offset-3.col-sm-4
+			.well
+				%ul
+					%li= c.name

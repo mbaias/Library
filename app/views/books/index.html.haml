@@ -1,0 +1,23 @@
+- @books.each do |b|
+	.col-sm-3
+		.well
+			.book-shelf.clearfix
+				.book-name
+					%b= b.name
+				.book-author
+					Author:
+					%em= b.author
+				.book-year
+					Year:
+					= b.year
+				.book-genre
+				.book-cover
+					= image_tag b.photo.url(:medium)
+				- if logged_in?
+					.favorite
+						- unless current_user.favorite_books.exists?(id: b.id)
+							= link_to "Add to Favorites" , favorite_books_path(book_id: b.id), method: :post, class: "pull-right favorites"
+						- else
+							= link_to "Remove from favorites", favorite_book_path(b.id), method: :delete, class: "pull-right favorites"
+					.delete.pull-right
+						= link_to "Delete book", book_path(b.id), method: :delete, class: "btn btn-danger btn-sm"
